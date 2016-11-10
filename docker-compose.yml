@@ -1,0 +1,33 @@
+version: '2'
+services:
+  rails:
+    image: rails:5
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    volumes_from:
+      - datastore
+    ports:
+      - '3000:3000'
+    command: rails s -b 0.0.0.0
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:9.6
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD:
+    ports:
+      - '5432:5432'
+    volumes_from:
+      - datastore
+  datastore:
+    image: busybox
+    volumes:
+      - tmp:/usr/src/app/tmp
+      - bundle:/usr/local/bundle
+      - postgres:/var/lib/postgresql/data
+volumes:
+  bundle:
+  tmp:
+  postgres:
