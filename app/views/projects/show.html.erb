@@ -3,6 +3,12 @@
 <p>
   <strong>Name:</strong>
   <%= @project.name %>
+
+  <ul>
+    <% @project.tasks.each do |task| %>
+      <li><%= task.title %>
+    <% end %>
+  </ul>
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
