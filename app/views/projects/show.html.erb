@@ -7,6 +7,7 @@
   <ul>
     <% @project.tasks.each do |task| %>
       <li><%= task.title %>
+        <%= link_to 'show', project_task_path(@project, task) %>
     <% end %>
   </ul>
 </p>

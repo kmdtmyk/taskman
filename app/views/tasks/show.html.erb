@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>title:</strong>
+  <%= @task.title %>
+</p>
+
+<p>
+  <%= @task.body %>
+</p>
+
+<%= link_to 'Back', project_path(@task.project) %>
