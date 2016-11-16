@@ -3,6 +3,7 @@
 <p>
   <strong>Name:</strong>
   <%= @project.name %>
+  <%= link_to '[Edit]', edit_project_path(@project) %>
 
   <ul>
     <% @project.tasks.each do |task| %>
@@ -12,5 +13,5 @@
   </ul>
 </p>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'New task', new_project_task_path(@project) %> |
 <%= link_to 'Back', projects_path %>
