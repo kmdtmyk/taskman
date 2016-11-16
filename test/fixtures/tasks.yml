@@ -1,20 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one_one:
-  title: task1-1
-  body: this is task 1-1
-  project: one
+<% (1..100).each do |n| %>
+project1_task<%= n %>:
+  title: task 1-<%= n %>
+  body: this is task <%= n %>
+  project: project1
+<% end %>
 
-one_two:
-  title: task1-2
-  body: this is task 1-2
-  project: one
-
-two_one:
-  title: taks2-1
-  body: this is task 2-1
-  project: two
-two_two:
-  title: taks2-2
-  body: this is task 2-2
-  project: two
+<% (1..10).each do |n| %>
+project2_task<%= n %>:
+  title: task 2-<%= n %>
+  body: this is task <%= n %>
+  project: project2
+<% end %>
