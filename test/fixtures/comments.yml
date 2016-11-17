@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+comment1:
+  body: this is comment 1.
+  task: project1_task1
+
+comment2:
+  body: this is comment 2.
+  task: project1_task1

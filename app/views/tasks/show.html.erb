@@ -9,4 +9,12 @@
   <%= @task.body %>
 </p>
 
+<h2>comments</h2>
+
+<% @task.comments.each do |comment| %>
+  <p>
+    <%= comment.body %>
+  <p>
+<% end %>
+
 <%= link_to 'Back', project_path(@task.project) %>
