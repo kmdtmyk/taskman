@@ -7,12 +7,13 @@ class TasksController < ApplicationController
   end
 
   def show
+    @comment = @task.comments.build
   end
 
   def create
     @task = @project.tasks.build(task_params)
     if @task.save
-      redirect_to @project, notice: 'Taks was successfully created.'
+      redirect_to @project, notice: 'Task was successfully created.'
     else
       render :new
     end
