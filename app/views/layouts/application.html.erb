@@ -2,13 +2,23 @@
 <html>
   <head>
     <title>App</title>
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css'>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+
+    <div class='ui menu inverted'>
+      <a class='header item' href='/'>
+        Home
+      </a>
+    </div>
+
+    <div class='ui container'>
+      <%= yield %>
+    </div>
+
   </body>
 </html>
