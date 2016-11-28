@@ -1,28 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>title:</strong>
+<h1>
   <%= @task.title %>
-</p>
+</h1>
 
-<p>
-  <%= @task.body %>
-</p>
+<div class='ui comments'>
 
-<h2>comments</h2>
+  <div class='comment'>
+    <div class='content'>
+      <div class='text'>
+        <%= @task.body %>
+      </div>
+      <div class='metadata'>
+        <span class='date'>
+          <%= @task.created_at %>
+        </span>
+      </div>
+    </div>
+  </div>
 
-<% @task.comments.each do |comment| %>
-  <p>
-    <%= comment.body %>
-  <p>
-<% end %>
+  <% @task.comments.each do |comment| %>
+    <% if comment.persisted? %>
+      <div class='comment'>
+        <div class='content'>
+          <div class='text'>
+            <%= comment.body %>
+          </div>
+          <div class='metadata'>
+            <span class='date'>
+              <%= comment.created_at %>
+            </span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 
-<h2>new comment</h2>
+</div>
 
-<%= form_for([@task.project, @task, @comment]) do |f| %>
+<%= form_for([@task.project, @task, @comment], html: {class: 'ui reply form'}) do |f| %>
   <% if @comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this project from being saved:</h2>
+    <div id='error_explanation'>
+      <h2><%= pluralize(@comment.errors.count, 'error') %> prohibited this project from being saved:</h2>
 
       <ul>
       <% @comment.errors.full_messages.each do |message| %>
@@ -32,13 +51,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :body %>
+  <div class='field'>
     <%= f.text_area :body %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div>
+    <%= f.submit class: 'ui blue laveled submit icon button' %>
   </div>
 <% end %>
 
