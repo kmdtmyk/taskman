@@ -7,6 +7,7 @@ class TasksController < ApplicationController
     @tasks = Task
       .where('project_id = ?', @project)
       .where('title LIKE ?', "%#{@q}%")
+      .order(updated_at: :DESC)
       .page(params[:page])
   end
 
