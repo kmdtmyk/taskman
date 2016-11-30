@@ -10,11 +10,6 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @q = params[:q]
-    @tasks = Task
-      .where('project_id = ?', @project)
-      .where('title LIKE ?', "%#{@q}%")
-      .page(params[:page])
   end
 
   # GET /projects/new

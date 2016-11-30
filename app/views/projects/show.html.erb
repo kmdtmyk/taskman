@@ -2,32 +2,11 @@
 
 <h1>
   <%= @project.name %>
-  <%= link_to '[Edit]', edit_project_path(@project) %>
 </h1>
 
-<form class='ui form'>
-  <div class='ui icon input'>
-    <input type='search' name='q' value='<%= @q %>' placeholder='search'>
-    <i class='search icon'></i>
-  </div>
-</form>
+<ul>
+  <li><%= link_to "tasks (#{@project.tasks.count})", project_tasks_path(@project) %>
+</ul>
 
-<div class='ui relaxed divided list'>
-  <% @tasks.each do |task| %>
-    <div class='item'>
-      <div class='content'>
-        <%= link_to task.title, project_task_path(@project, task), class: 'header' %>
-        <div class='description'>
-          <%= task.updated_at %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-<%= paginate @tasks %>
-
-<div class='ui divider'></div>
-
-<%= link_to 'New task', new_project_task_path(@project) %> |
+<%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

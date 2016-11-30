@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <%= @project.name %>
+</h1>
+
+<form class='ui form'>
+  <div class='ui icon input'>
+    <input type='search' name='q' value='<%= @q %>' placeholder='search'>
+    <i class='search icon'></i>
+  </div>
+</form>
+
+<div class='ui relaxed divided list'>
+  <% @tasks.each do |task| %>
+    <div class='item'>
+      <div class='content'>
+        <%= link_to task.title, project_task_path(@project, task), class: 'header' %>
+        <div class='description'>
+          <%= task.updated_at %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= paginate @tasks %>
+
+<div class='ui divider'></div>
+
+<%= link_to 'New task', new_project_task_path(@project) %>

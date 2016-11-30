@@ -1,6 +1,14 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show]
-  before_action :set_project, only: [:new, :create]
+  before_action :set_project, only: [:index, :new, :create]
+
+  def index
+    @q = params[:q]
+    @tasks = Task
+      .where('project_id = ?', @project)
+      .where('title LIKE ?', "%#{@q}%")
+      .page(params[:page])
+  end
 
   def new
     @task = @project.tasks.build
@@ -13,7 +21,7 @@ class TasksController < ApplicationController
   def create
     @task = @project.tasks.build(task_params)
     if @task.save
-      redirect_to @project, notice: 'Task was successfully created.'
+      redirect_to [@project, @task], notice: 'Task was successfully created.'
     else
       render :new
     end
