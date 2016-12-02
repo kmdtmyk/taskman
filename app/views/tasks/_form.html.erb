@@ -1,7 +1,7 @@
-<%= form_for([project, task]) do |f| %>
+<%= form_for([project, task], html: {class: 'ui form'}) do |f| %>
   <% if task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+    <div id='error_explanation'>
+      <h2><%= pluralize(task.errors.count, 'error') %> prohibited this task from being saved:</h2>
 
       <ul>
       <% task.errors.full_messages.each do |message| %>
@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class='field'>
     <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
 
-  <div class="field">
+  <div class='field'>
     <%= f.label :body %>
     <%= f.text_area :body %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div>
+    <%= f.submit class: 'ui button primary'%>
   </div>
 <% end %>
