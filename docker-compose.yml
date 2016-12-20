@@ -2,6 +2,7 @@ version: '2'
 services:
   rails:
     image: rails:5
+    container_name: 'rails'
     working_dir: /usr/src/app
     volumes:
       - .:/usr/src/app
@@ -27,6 +28,8 @@ services:
       - '80:80'
     volumes:
       - ./nginx:/etc/nginx
+    depends_on:
+      - rails
   datastore:
     image: busybox
     volumes:
