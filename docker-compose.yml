@@ -33,10 +33,8 @@ services:
   datastore:
     image: busybox
     volumes:
-      - tmp:/usr/src/app/tmp
       - bundle:/usr/local/bundle
       - postgres:/var/lib/postgresql/data
 volumes:
   bundle:
-  tmp:
   postgres:
